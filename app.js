@@ -16,9 +16,9 @@ try {
 
 const createUserUrl = "https://borjomi.loremipsum.ge/api/register", //method POST  ყველა ველი სავალდებულო
   getAllUsersUrl = "https://borjomi.loremipsum.ge/api/all-users", //method GET
-  getSingleUserUrl = "https://borjomi.loremipsum.ge/api/get-user/120 ", //id, method  GET
-  updateUserUrl = "https://borjomi.loremipsum.ge/api/update-user/145 ", //id, method PUT  ყველა ველი სავალდებულო
-  deleteUserUrl = "https://borjomi.loremipsum.ge/api/delete-user/145"; //id, method DELETE
+  getSingleUserUrl = "https://borjomi.loremipsum.ge/api/get-user/", //id, method  GET
+  updateUserUrl = "https://borjomi.loremipsum.ge/api/update-user/", //id, method PUT  ყველა ველი სავალდებულო
+  deleteUserUrl = "https://borjomi.loremipsum.ge/api/delete-user/"; //id, method DELETE
 
 const regForm = document.querySelector("#registration-form"),
   userName = regForm.querySelector("#userName"),
@@ -125,9 +125,7 @@ async function updateUser(userObj) {
 
 async function getSingleUser(id) {
   try {
-    const response = await fetch(
-      `https://borjomi.loremipsum.ge/api/get-user/${id}`
-    );
+    const response = await fetch(getSingleUserUrl + id);
     const data = await response.json();
     return data.users;
   } catch (e) {
@@ -143,15 +141,10 @@ function createNewUser(userData) {
     },
     body: JSON.stringify(userData),
   })
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      console.log("User created successfully: ", result);
-
+    .then((res) => res.json())
+    .then(() => {
       regForm.reset();
       userFormDialog.close();
-
       getAllUsersAsync();
     })
     .catch((err) => {
@@ -176,24 +169,28 @@ function deleteUser(id) {
 regForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (true) {
-    const userData = {
-      first_name: userName.value,
-      last_name: userSurname.value,
-      phone: userPhone.value,
-      id_number: userPersonalID.value,
-      email: userEmail.value,
-      gender: regForm.querySelector("[name='gender']:checked").value,
-      zip_code: userZip.value,
-    };
-    console.log(userData);
-    tableRow.innerHTML += createNewUser(userData);
+  const userData = {
+    id: userId.value,
+    first_name: userName.value,
+    last_name: userSurname.value,
+    phone: userPhone.value,
+    id_number: userPersonalID.value,
+    email: userEmail.value,
+    gender: regForm.querySelector("[name='gender']:checked").value,
+    zip_code: userZip.value,
+  };
+  // console.log(userData);
+  // tableRow.innerHTML += createNewUser(userData);
 
-    //  TODO: თუ userId.value არის ცარიელი (თავიდან ცარიელია) მაშინ უნდა შევქმნათ  -->  createNewUser(userData);
-    // createNewUser(userData);
+  //  TODO: თუ userId.value არის ცარიელი (თავიდან ცარიელია) მაშინ უნდა შევქმნათ  -->  createNewUser(userData);
+  // createNewUser(userData);
 
-    // თუ დაედითებას ვაკეთებთ, ჩვენ ვანიჭებთ მნიშვნელობას userActions ფუნქციაში
-    // TODO: თუ userId.value არის (არაა ცარიელი სტრინგი) მაშინ უნდა დავაედიტოთ, (როცა ფორმს ედითის ღილაკის შემდეგ იუზერის ინფუთით ვავსებთ, ვაედითებთ და ვასაბმითებთ) -->  updateUser(userData);
+  // თუ დაედითებას ვაკეთებთ, ჩვენ ვანიჭებთ მნიშვნელობას userActions ფუნქციაში
+  // TODO: თუ userId.value არის (არაა ცარიელი სტრინგი) მაშინ უნდა დავაედიტოთ, (როცა ფორმს ედითის ღილაკის შემდეგ იუზერის ინფუთით ვავსებთ, ვაედითებთ და ვასაბმითებთ) -->  updateUser(userData);
+  if (userId.value === "") {
+    createNewUser(userData);
+  } else {
+    updateUser(userData);
   }
 });
 console.log(document.querySelector("button").dataset);
