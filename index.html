@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <button id="addNewUser">add new user</button>
+      <dialog class="modal-content" id="userFormDialog">
+        <button id="close" class="close-button">X</button>
+        <form id="registration-form" action="#" method="#" novalidate>
+          <input id="userId" type="hidden" value="" />
+          <div class="form-group">
+            <label for="userName">Enter User Name</label>
+            <input type="text" id="userName" placeholder="user name" required />
+          </div>
+          <div class="form-group">
+            <label for="userSurname">Enter User Surname</label>
+            <input
+              type="text"
+              id="userSurname"
+              placeholder="user surname"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="userPhone">Enter phone number</label>
+            <input
+              type="tel"
+              id="userPhone"
+              placeholder="phone number"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="userPersonalId">Enter personal id</label>
+            <input
+              type="number"
+              id="userPersonalId"
+              placeholder="personal id"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="userEmail">Enter Email</label>
+            <input type="email" id="userEmail" placeholder="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="userZipCode">Enter zip code</label>
+            <input
+              type="text"
+              id="userZipCode"
+              placeholder="zip code"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <p>Select Gender</p>
+            <label for="male"
+              ><input
+                type="radio"
+                id="male"
+                value="male"
+                name="gender"
+                required
+              />
+              Male</label
+            >
+            <label for="female"
+              ><input
+                type="radio"
+                id="female"
+                value="female"
+                name="gender"
+                required
+              />
+              Female</label
+            >
+            <label for="other"
+              ><input
+                type="radio"
+                id="other"
+                value="other"
+                name="gender"
+                required
+              />
+              Other</label
+            >
+          </div>
+
+          <div class="form-group">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </dialog>
+    </section>
+
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>PersonalID</th>
+            <th>Mobile number</th>
+            <th>Zip</th>
+            <th>Gender</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableRows"></tbody>
+      </table>
+    </section>
+  </body>
+</html>

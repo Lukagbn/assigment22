@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  max-width: 300px;
+  width: 100%;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th {
+  padding: 20px;
+}
+td {
+  padding: 10px;
+  text-align: center;
+}
+.edit,
+.delete {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.edit {
+  background-color: lightgreen;
+}
+.delete {
+  background-color: red;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.message {
+  height: 20px;
+  font-size: 14px;
+}
+input,
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+button {
+  width: fit-content;
+}
+.form-group label,
+.form-group p {
+  text-align: left;
+}
+.form-group.has-error input {
+  border: 2px solid red;
+}
+.form-group.has-error .message {
+  color: red;
+}
+
+.form-group.no-error input {
+  border: 2px solid green;
+}
+.form-group.no-error .message {
+  color: green;
+}
+label:has(input) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+input[type="radio"] {
+  width: initial;
+}
+
+/*input:user-invalid{*/
+/*  border: 2px solid red;*/
+/*}*/
+/*input:user-valid{*/
+/*  border: 2px solid green;*/
+/*}*/
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+  max-width: 900px;
+  width: 90%;
+  border: none;
+}
+.close-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  font-size: 16px;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+dialog::backdrop {
+  background: rgba(1, 0, 0, 0.5);
+}
